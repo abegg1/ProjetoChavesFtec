@@ -233,6 +233,14 @@ public class CadastroSala extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfSalaActionPerformed
 
+    
+    private void limparCampos(){
+        tfSala.setText("");
+        tfDescricao.setText("");
+        tfTipo.setText("");
+        tfCapacidade.setText("");
+    }
+    
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Sala sala = new Sala();
        
@@ -247,7 +255,19 @@ public class CadastroSala extends javax.swing.JFrame {
         
         
         JOptionPane dialogoAlertaSalvo = new JOptionPane();
-        dialogoAlertaSalvo.showMessageDialog(this, messagem);
+       
+        int repostaDialago = dialogoAlertaSalvo.showConfirmDialog(this,"Deseja salvar os dados da "
+                + "seguinte sala?\n" + messagem);
+        
+        if(repostaDialago == JOptionPane.YES_OPTION){
+            dialogoAlertaSalvo.showMessageDialog(this, "Salvo com sucesso!!!");
+            limparCampos();
+        }else if (repostaDialago == JOptionPane.NO_OPTION){
+            this.setVisible(false);
+            Principal principal = new Principal();
+            principal.setVisible(true);
+        }
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
