@@ -5,6 +5,10 @@
  */
 package br.com.ftec.chaves.view;
 
+import br.com.ftec.chaves.model.Sala;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MARCE
@@ -230,7 +234,20 @@ public class CadastroSala extends javax.swing.JFrame {
     }//GEN-LAST:event_tfSalaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        Sala sala = new Sala();
+       
+        sala.setSala(tfSala.getText());
+        sala.setDescricao(tfDescricao.getText());
+        sala.setTipo(tfTipo.getText());
+        sala.setCapacidade(Integer.parseInt(tfCapacidade.getText()));
+        
+         String messagem = "sala: " + sala.getSala() + "\ndescrição: " +
+                 sala.getDescricao() + "\nCapacidade: " + sala.getCapacidade() +
+                 "\ntipo: " + sala.getTipo() + "\n\nSalvo com sucesso!!!";
+        
+        
+        JOptionPane dialogoAlertaSalvo = new JOptionPane();
+        dialogoAlertaSalvo.showMessageDialog(this, messagem);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
