@@ -7,6 +7,9 @@ public class Sala {
     private int capacidade;
     private String tipo;
 
+    public Sala() {
+    }
+
     public String getSala() {
         return sala;
     }

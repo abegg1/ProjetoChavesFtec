@@ -5,6 +5,7 @@
  */
 package br.com.ftec.chaves.view;
 
+import br.com.ftec.chaves.controller.SalaDAO;
 import br.com.ftec.chaves.model.Sala;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -83,6 +84,11 @@ public class CadastroSala extends javax.swing.JFrame {
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         tfTipo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
@@ -212,7 +218,7 @@ public class CadastroSala extends javax.swing.JFrame {
                     .addGroup(pnlFundoLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(pnlCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -251,24 +257,36 @@ public class CadastroSala extends javax.swing.JFrame {
         
          String messagem = "sala: " + sala.getSala() + "\ndescrição: " +
                  sala.getDescricao() + "\nCapacidade: " + sala.getCapacidade() +
-                 "\ntipo: " + sala.getTipo() + "\n\nSalvo com sucesso!!!";
+                 "\ntipo: " + sala.getTipo();
         
         
         JOptionPane dialogoAlertaSalvo = new JOptionPane();
        
+        
+        
         int repostaDialago = dialogoAlertaSalvo.showConfirmDialog(this,"Deseja salvar os dados da "
                 + "seguinte sala?\n" + messagem);
         
         if(repostaDialago == JOptionPane.YES_OPTION){
+            SalaDAO dao = new SalaDAO();
+            dao.salvar(sala);
             dialogoAlertaSalvo.showMessageDialog(this, "Salvo com sucesso!!!");
             limparCampos();
         }else if (repostaDialago == JOptionPane.NO_OPTION){
+            limparCampos();
+        }else if(repostaDialago == JOptionPane.CANCEL_OPTION){
             this.setVisible(false);
             Principal principal = new Principal();
             principal.setVisible(true);
         }
         
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+       this.setVisible(false);
+       Principal principal = new Principal();
+       principal.setVisible(true);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
