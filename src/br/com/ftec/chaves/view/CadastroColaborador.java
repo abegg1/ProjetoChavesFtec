@@ -5,6 +5,12 @@
  */
 package br.com.ftec.chaves.view;
 
+import br.com.ftec.chaves.controller.ColaboradorDAO;
+import br.com.ftec.chaves.controller.SalaDAO;
+import br.com.ftec.chaves.model.Colaborador;
+import br.com.ftec.chaves.model.Sala;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MARCE
@@ -17,7 +23,21 @@ public class CadastroColaborador extends javax.swing.JFrame {
     public CadastroColaborador() {
         initComponents();
     }
-
+    
+     private void limparCampos(){
+        tfNome.setText("");
+        tfCpf.setText("");
+        tfEmail.setText("");
+        tfSenha.setText("");
+        tfTelefone.setText("");
+    }
+    
+    private void voltarJanelaPrincipal(){
+         this.setVisible(false);
+         Principal principal = new Principal();
+         principal.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,6 +111,11 @@ public class CadastroColaborador extends javax.swing.JFrame {
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnSalvar.setText("Salvar");
@@ -236,12 +261,45 @@ public class CadastroColaborador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        Colaborador colaborador = new Colaborador();
+       
+        colaborador.setNome(tfNome.getText());
+        colaborador.setCpf(tfCpf.getText());
+        colaborador.setEmail(tfEmail.getText());
+        colaborador.setSenha(tfSenha.getText());
+        colaborador.setTelefone(tfTelefone.getText());
+        
+         String messagem = "Nome: " + colaborador.getNome() + "\nCPF: " +
+                 colaborador.getCpf() + "\nEmail: " + colaborador.getEmail() +
+                 "\nTelefone: " + colaborador.getTelefone() + "\nSenha: " + 
+                 colaborador.getSenha();
+        
+        
+        JOptionPane dialogoAlertaSalvo = new JOptionPane();
+     
+        int repostaDialago = dialogoAlertaSalvo.showConfirmDialog(this,
+                "Deseja salvar os dados do seguinte colaborador?\n" + messagem);
+     
+        if(repostaDialago == JOptionPane.YES_OPTION){
+            ColaboradorDAO dao = new ColaboradorDAO();
+            dao.salvar(colaborador);
+            dialogoAlertaSalvo.showMessageDialog(this, "Salvo com sucesso!!!");
+            limparCampos();
+            voltarJanelaPrincipal();
+        }else if (repostaDialago == JOptionPane.NO_OPTION){
+            limparCampos();
+        }else if(repostaDialago == JOptionPane.CANCEL_OPTION){
+           voltarJanelaPrincipal();
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNomeActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+       voltarJanelaPrincipal();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

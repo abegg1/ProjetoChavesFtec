@@ -247,6 +247,12 @@ public class CadastroSala extends javax.swing.JFrame {
         tfCapacidade.setText("");
     }
     
+    private void voltarJanelaPrincipal(){
+         this.setVisible(false);
+         Principal principal = new Principal();
+         principal.setVisible(true);
+    }
+    
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Sala sala = new Sala();
        
@@ -261,31 +267,26 @@ public class CadastroSala extends javax.swing.JFrame {
         
         
         JOptionPane dialogoAlertaSalvo = new JOptionPane();
-       
-        
-        
+     
         int repostaDialago = dialogoAlertaSalvo.showConfirmDialog(this,"Deseja salvar os dados da "
                 + "seguinte sala?\n" + messagem);
-        
+     
         if(repostaDialago == JOptionPane.YES_OPTION){
             SalaDAO dao = new SalaDAO();
             dao.salvar(sala);
             dialogoAlertaSalvo.showMessageDialog(this, "Salvo com sucesso!!!");
             limparCampos();
+            voltarJanelaPrincipal();
         }else if (repostaDialago == JOptionPane.NO_OPTION){
             limparCampos();
         }else if(repostaDialago == JOptionPane.CANCEL_OPTION){
-            this.setVisible(false);
-            Principal principal = new Principal();
-            principal.setVisible(true);
+           voltarJanelaPrincipal();
         }
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       this.setVisible(false);
-       Principal principal = new Principal();
-       principal.setVisible(true);
+       voltarJanelaPrincipal();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
