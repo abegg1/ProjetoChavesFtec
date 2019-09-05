@@ -5,6 +5,13 @@
  */
 package br.com.ftec.chaves.view;
 
+import br.com.ftec.chaves.controller.ColaboradorDAO;
+import br.com.ftec.chaves.controller.ReservaDAO;
+import br.com.ftec.chaves.controller.SalaDAO;
+import br.com.ftec.chaves.model.Colaborador;
+import br.com.ftec.chaves.model.Reserva;
+import br.com.ftec.chaves.model.Sala;
+
 /**
  *
  * @author MARCE
@@ -30,16 +37,15 @@ public class ConsultaSalas extends javax.swing.JFrame {
         pnlFundo = new javax.swing.JPanel();
         lblTextoTitulo = new javax.swing.JLabel();
         pnlConsulta = new javax.swing.JPanel();
-        btnCancelar = new javax.swing.JButton();
-        tfTipo = new javax.swing.JTextField();
-        lblTextoTipo = new javax.swing.JLabel();
-        lblTextoCapacidade = new javax.swing.JLabel();
-        tfCapacidade = new javax.swing.JTextField();
-        tfDescricao = new javax.swing.JTextField();
-        lblTextoDescricao = new javax.swing.JLabel();
+        tfData = new javax.swing.JTextField();
+        lblTextoData = new javax.swing.JLabel();
+        lblTextoTurno = new javax.swing.JLabel();
+        tfTurno = new javax.swing.JTextField();
+        tfResponsavel = new javax.swing.JTextField();
+        lblTextoResponsavel = new javax.swing.JLabel();
         lblTextoSala = new javax.swing.JLabel();
         tfSala = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JButton();
+        btnReserva = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tQuadroDisponibilidade = new javax.swing.JTable();
 
@@ -58,33 +64,30 @@ public class ConsultaSalas extends javax.swing.JFrame {
 
         pnlConsulta.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnCancelar.setText("Cancelar");
-
-        tfTipo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        tfTipo.addActionListener(new java.awt.event.ActionListener() {
+        tfData.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tfData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTipoActionPerformed(evt);
+                tfDataActionPerformed(evt);
             }
         });
 
-        lblTextoTipo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblTextoTipo.setText("Tipo:");
+        lblTextoData.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblTextoData.setText("Data:");
 
-        lblTextoCapacidade.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblTextoCapacidade.setText("Capacidade:");
+        lblTextoTurno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblTextoTurno.setText("Turno:");
 
-        tfCapacidade.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tfTurno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        tfDescricao.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        tfDescricao.addActionListener(new java.awt.event.ActionListener() {
+        tfResponsavel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tfResponsavel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfDescricaoActionPerformed(evt);
+                tfResponsavelActionPerformed(evt);
             }
         });
 
-        lblTextoDescricao.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblTextoDescricao.setText("Descrição:");
+        lblTextoResponsavel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblTextoResponsavel.setText("Responsável:");
 
         lblTextoSala.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblTextoSala.setText("Sala:");
@@ -96,11 +99,11 @@ public class ConsultaSalas extends javax.swing.JFrame {
             }
         });
 
-        btnSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnReserva.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnReserva.setText("Reserva");
+        btnReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                btnReservaActionPerformed(evt);
             }
         });
 
@@ -108,35 +111,35 @@ public class ConsultaSalas extends javax.swing.JFrame {
         pnlConsulta.setLayout(pnlConsultaLayout);
         pnlConsultaLayout.setHorizontalGroup(
             pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 284, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsultaLayout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addComponent(btnReserva)
+                .addGap(94, 94, 94))
             .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlConsultaLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(pnlConsultaLayout.createSequentialGroup()
-                            .addComponent(btnSalvar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCancelar))
-                        .addGroup(pnlConsultaLayout.createSequentialGroup()
-                            .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblTextoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlConsultaLayout.createSequentialGroup()
-                                        .addComponent(lblTextoCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(16, 16, 16)))
-                                .addComponent(lblTextoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblTextoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfDescricao)
-                                .addComponent(tfCapacidade)
-                                .addComponent(tfTipo)
-                                .addComponent(tfSala, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTextoResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlConsultaLayout.createSequentialGroup()
+                                .addComponent(lblTextoTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)))
+                        .addComponent(lblTextoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTextoData, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tfResponsavel)
+                        .addComponent(tfTurno)
+                        .addComponent(tfData)
+                        .addComponent(tfSala, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnlConsultaLayout.setVerticalGroup(
             pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 202, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsultaLayout.createSequentialGroup()
+                .addContainerGap(160, Short.MAX_VALUE)
+                .addComponent(btnReserva)
+                .addContainerGap())
             .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlConsultaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -145,21 +148,17 @@ public class ConsultaSalas extends javax.swing.JFrame {
                         .addComponent(lblTextoSala, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblTextoDescricao)
-                        .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTextoResponsavel)
+                        .addComponent(tfResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tfCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblTextoCapacidade))
+                        .addComponent(tfTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTextoTurno))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblTextoTipo)
-                        .addComponent(tfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(19, 19, 19)
-                    .addGroup(pnlConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSalvar)
-                        .addComponent(btnCancelar))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblTextoData)
+                        .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(61, Short.MAX_VALUE)))
         );
 
         tQuadroDisponibilidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -184,13 +183,12 @@ public class ConsultaSalas extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFundoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFundoLayout.createSequentialGroup()
-                        .addComponent(pnlConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(214, 214, 214))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFundoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108))
+            .addGroup(pnlFundoLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(pnlConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFundoLayout.setVerticalGroup(
             pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +199,7 @@ public class ConsultaSalas extends javax.swing.JFrame {
                 .addComponent(pnlConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,23 +220,65 @@ public class ConsultaSalas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfSalaActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservaActionPerformed
+        Reserva reserva = new Reserva();
+        
+        reserva.setDia(tfData.getText());
+        reserva.setTurno(tfTurno.getText());
+        
+        SalaDAO salaDAO = new SalaDAO();
+        Sala sala = salaDAO.buscarSalaPorSala(tfSala.getText());
+        reserva.setSala(sala);
+        
+        ColaboradorDAO colaboradorDAO = new ColaboradorDAO();
+        Colaborador colaborador = colaboradorDAO.buscarColaboradorPorCpf(tfResponsavel.getText());
+        reserva.setColaborador(colaborador);
+        
+        ReservaDAO reservaDAO = new ReservaDAO();
+        reservaDAO.salvar(reserva);
+        
+    }//GEN-LAST:event_btnReservaActionPerformed
 
-    private void tfTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTipoActionPerformed
+    private void tfDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDataActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfTipoActionPerformed
+    }//GEN-LAST:event_tfDataActionPerformed
 
-    private void tfDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDescricaoActionPerformed
+    private void tfResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfResponsavelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfDescricaoActionPerformed
+    }//GEN-LAST:event_tfResponsavelActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
       
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CadastroColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CadastroColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CadastroColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CadastroColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ConsultaSalas().setVisible(true);
@@ -248,20 +288,19 @@ public class ConsultaSalas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnReserva;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTextoCapacidade;
-    private javax.swing.JLabel lblTextoDescricao;
+    private javax.swing.JLabel lblTextoData;
+    private javax.swing.JLabel lblTextoResponsavel;
     private javax.swing.JLabel lblTextoSala;
-    private javax.swing.JLabel lblTextoTipo;
     private javax.swing.JLabel lblTextoTitulo;
+    private javax.swing.JLabel lblTextoTurno;
     private javax.swing.JPanel pnlConsulta;
     private javax.swing.JPanel pnlFundo;
     private javax.swing.JTable tQuadroDisponibilidade;
-    private javax.swing.JTextField tfCapacidade;
-    private javax.swing.JTextField tfDescricao;
+    private javax.swing.JTextField tfData;
+    private javax.swing.JTextField tfResponsavel;
     private javax.swing.JTextField tfSala;
-    private javax.swing.JTextField tfTipo;
+    private javax.swing.JTextField tfTurno;
     // End of variables declaration//GEN-END:variables
 }

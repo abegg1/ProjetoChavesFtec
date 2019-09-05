@@ -8,7 +8,7 @@ public class ConnectionFactory {
     private static String USERNAME = "root";
     private static String PASSWORD = "";
     private static String DATABASE_URl = 
-            "jdbc:mysql://localhost/pojetochaves";
+            "jdbc:mysql://localhost:3306/pogetochaves";
     
     public static Connection createConnectionToMySQL() 
             throws ClassNotFoundException, SQLException{

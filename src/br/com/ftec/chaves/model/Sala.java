@@ -2,6 +2,7 @@ package br.com.ftec.chaves.model;
 
 public class Sala {
     
+    private int id;
     private String sala;
     private String descricao;
     private int capacidade;
@@ -10,6 +11,14 @@ public class Sala {
     public Sala() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getSala() {
         return sala;
     }

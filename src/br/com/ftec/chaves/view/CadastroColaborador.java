@@ -6,9 +6,7 @@
 package br.com.ftec.chaves.view;
 
 import br.com.ftec.chaves.controller.ColaboradorDAO;
-import br.com.ftec.chaves.controller.SalaDAO;
 import br.com.ftec.chaves.model.Colaborador;
-import br.com.ftec.chaves.model.Sala;
 import javax.swing.JOptionPane;
 
 /**

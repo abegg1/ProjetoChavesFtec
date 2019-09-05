@@ -2,14 +2,27 @@ package br.com.ftec.chaves.model;
 
 public class Colaborador {
     
+    
+    
+    private int id;
     private String nome;
     private String cpf;
     private String senha;
     private String telefone;
     private String email;
 
-    
-   
+    public Colaborador() {
+        
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
