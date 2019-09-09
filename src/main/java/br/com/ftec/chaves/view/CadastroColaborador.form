@@ -321,14 +321,14 @@
             <Component class="javax.swing.JLabel" name="lblLogoFtec">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/com/ftec/chaves/view/recouse/logo_ftec.png"/>
+                  <Image iconType="3" name="/imagens/logo_ftec.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblLogoIbgen">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/com/ftec/chaves/view/recouse/logo_ibgen.png"/>
+                  <Image iconType="3" name="/imagens/logo_ibgen.png"/>
                 </Property>
               </Properties>
             </Component>

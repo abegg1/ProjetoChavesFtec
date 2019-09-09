@@ -189,9 +189,9 @@ public class CadastroColaborador extends javax.swing.JFrame {
 
         pnlLogos.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblLogoFtec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ftec/chaves/view/recouse/logo_ftec.png"))); // NOI18N
+        lblLogoFtec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo_ftec.png"))); // NOI18N
 
-        lblLogoIbgen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ftec/chaves/view/recouse/logo_ibgen.png"))); // NOI18N
+        lblLogoIbgen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo_ibgen.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlLogosLayout = new javax.swing.GroupLayout(pnlLogos);
         pnlLogos.setLayout(pnlLogosLayout);
